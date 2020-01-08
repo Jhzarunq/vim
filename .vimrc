@@ -8,15 +8,15 @@ syntax enable
 let g:ctrlp_working_path_mode = 'ra'                                                                                   
 let g:ctrlp_extensions = ['buffertag'] 
 
-
 let g:php_cs_fixer_php_path = "F:/php.exe"               " Path to PHP
 let g:php_cs_fixer_path = "C:/Users/15743/php-cs-fixer"
 let g:php_cs_fixer_rules = "@PSR2"   
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_config_file = "C:/Users/15743/.php_cs.dist"
-
-""'colorscheme base16-material
-colorscheme base16-tomorrow-night-eighties
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+"colorscheme base16-material
+"colorscheme base16-tomorrow-night-eighties
+colorscheme base16-tomorrow-night
 set guifont=Inconsolata:h13
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
@@ -28,13 +28,6 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-inoremap ( ()<LEFT>
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-
-
 set t_CO=256
 set linespace=6
 set guioptions-=e
@@ -100,19 +93,24 @@ nmap <Leader>w :w!<cr>
 
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
-
-
 set nohlsearch
 set incsearch
 
 imap jj <Esc>
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
-
+nmap <Leader>ev :e $MYVIMRC<cr>
+nmap <Leader>er :e application/route.php<cr>
+vmap <Leader>c dmm
+vmap <Leader>p p`mP
+vmap <Leader>i Iif(jjlxA){<cr>
+vmap <Leader>e Iempty(jjlxA)<cr>
+vmap <Leader>m d`mp
+imap <Leader>c <Esc>mm
 
 augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
 augroup END
+
 if has('gui_running') && has("win32")
 	au GUIEnter * simalt ~x
 endif
