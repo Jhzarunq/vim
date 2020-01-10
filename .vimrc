@@ -115,6 +115,7 @@ nmap <Leader>df $?public<cr>ddda{
 nmap <leader>afe Go<Esc>?}<cr>Opubf<Tab> 
 nmap <Leader>af /function<cr>/{<cr>]}o<cr>pubf<Tab>
 nmap <Leader>afr /function<cr>/{<cr>]}o<cr>prof<Tab>
+nmap <Leader>f ,pcf<cr>
 "nmap <Leader>af /function<cr>/{<cr>]}o<cr>pubf<Tab>zz<Right>
 cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'\' : '%%'
 function Namespace()
@@ -129,9 +130,12 @@ function Af()
     execute "/function"
     execute "normal Opubf"
 endfunction
-nmap <Leader>t :call Namespace()<cr>
+imap <Leader>t <Esc>:call Namespace()<cr>
 imap <Leader>s <Esc>:call Af()<cr>
 nmap <Leader>l <Esc>:!php -l %<cr>
+imap <Leader>d <Esc>vawda
+
+
 let g:phpcomplete_relax_static_constraint = 1
 let g:phpcomplete_search_tags_for_variables = 1
 
