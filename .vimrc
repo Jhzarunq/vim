@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set number
 
 
 so ~/.vim/plugins.vim
@@ -14,10 +15,8 @@ let g:php_cs_fixer_rules = "@PSR2"
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_config_file = "C:/Users/15743/.php_cs.dist"
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
-"colorscheme base16-material
-"colorscheme base16-tomorrow-night-eighties
-colorscheme base16-tomorrow-night
-set guifont=Inconsolata:h13
+colorscheme base16-tomorrow-night-eighties
+set guifont=Inconsolata:h13:b
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 set fileencoding=utf-8
@@ -98,6 +97,8 @@ set incsearch
 
 imap jj <Esc>
 nmap <Leader>ev :e $MYVIMRC<cr>
+"nmap <Leader>en :e C:/Users/15743/vimfiles/snippets/php.snippets<cr>
+nmap <Leader>en :e ~/vimfiles/snippets/php.snippets<cr>
 nmap <Leader>er :e application/route.php<cr>
 vmap <Leader>c dmm
 vmap <Leader>p p`mP
@@ -105,6 +106,36 @@ vmap <Leader>i Iif(jjlxA){<cr>
 vmap <Leader>e Iempty(jjlxA)<cr>
 vmap <Leader>m d`mp
 imap <Leader>c <Esc>mm
+nmap <Leader>t ^f[vf'di-><Esc>f'vf]d
+nmap <Leader>b ^vf(df)vf{da?;<Esc>v/}<cr>:s/;//g<cr>/}<cr>vf{di:<Esc>/}<cr>x
+vmap <Leader>/ :normal I//<cr>
+imap <S-cr> <Esc>o
+imap zz <Esc>zzi
+nmap <Leader>df $?public<cr>ddda{
+nmap <leader>afe Go<Esc>?}<cr>Opubf<Tab> 
+nmap <Leader>af /function<cr>/{<cr>]}o<cr>pubf<Tab>
+nmap <Leader>afr /function<cr>/{<cr>]}o<cr>prof<Tab>
+"nmap <Leader>af /function<cr>/{<cr>]}o<cr>pubf<Tab>zz<Right>
+cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'\' : '%%'
+function Namespace()
+    let l:file = expand('%:h')
+    let l:file = substitute(l:file, 'application', 'app','g')
+    execute "normal ggonamespace " . l:file."; "
+endfunction
+function T()
+    execute "'<,'>s/admin/aa/g"
+endfunction
+function Af()
+    execute "/function"
+    execute "normal Opubf"
+endfunction
+nmap <Leader>t :call Namespace()<cr>
+imap <Leader>s <Esc>:call Af()<cr>
+nmap <Leader>l <Esc>:!php -l %<cr>
+let g:phpcomplete_relax_static_constraint = 1
+let g:phpcomplete_search_tags_for_variables = 1
+
+
 
 augroup autosourcing
 	autocmd!
