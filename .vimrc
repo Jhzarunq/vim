@@ -3,6 +3,10 @@ set number
 
 
 so ~/.vim/plugins.vim
+so ~/.vim/php-doc.vim
+imap <Leader>d <ESC>:call PhpDocSingle()<CR>i
+nmap <Leader>d :call PhpDocSingle()<CR>
+vnoremap <Leader>d :call PhpDocRange()<CR>
 
 syntax enable
 "-------------------------------------EsLint-------------------------------------------"
@@ -13,8 +17,12 @@ let g:php_cs_fixer_rules = "@PSR2"
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_config_file = "C:/Users/15743/.php_cs.dist"
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
-colorscheme base16-tomorrow-night-eighties
-set guifont=Inconsolata:h13:b
+"colorscheme base16-tomorrow-night-eighties
+colorscheme base16-material
+"colorscheme base16-material-darker
+"set guifont=Inconsolata:h15
+set guifont=Monoid:h14
+"set guifont=Fira_Code:h14:b
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 set fileencoding=utf-8
@@ -27,7 +35,7 @@ set tw=80
 set shiftwidth=4
 set softtabstop=4
 set t_CO=256
-set linespace=6
+set linespace=10
 set guioptions-=e
 set guioptions-=l
 set guioptions-=L
@@ -151,7 +159,13 @@ au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
 au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
 au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
 au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
+imap <Leader>b <C-x><C-o>
+"-----------------------PHPDoc--------------------------"
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-u> :call pdv#DocumentWithSnip()<CR>
+nmap <C-n> :e %:h/
 
+"-------------------------------------------------------"
 
 
 augroup autosourcing
