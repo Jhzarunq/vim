@@ -5,9 +5,13 @@ set number
 so ~/.vim/plugins.vim
 
 syntax enable
-
-let g:ctrlp_working_path_mode = 'ra'                                                                                   
-let g:ctrlp_extensions = ['buffertag'] 
+"-------------------------------------EsLint-------------------------------------------"
+au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
+au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
+au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
+au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
 
 let g:php_cs_fixer_php_path = "F:/php.exe"               " Path to PHP
 let g:php_cs_fixer_path = "C:/Users/15743/php-cs-fixer"
@@ -42,7 +46,6 @@ map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 set backspace=indent,eol,start
 let mapleader = ','
-let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d' 
 hi LineNr guibg=bg
 set foldcolumn=0
 hi foldcolumn guibg =bg
@@ -70,7 +73,12 @@ let g:multi_cursor_skip_key            = '<C-K>'
 set grepprg=ag
 
 let g:grep_cmd_opts = '--line-numbers -noheading'
-let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
+let g:ctrlp_working_path_mode = 'ra'                                                                                   
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|vendor|thinkphp|public)$',
+  \ 'file': '\v\.(exe|so|dll|xml|md|phar|lock)$',
+  \ }
+let g:ctrlp_extensions = ['buffertag'] 
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:15,results:15'
 
 let NERDTreeHijackNetrw = 0
