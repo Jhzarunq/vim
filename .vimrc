@@ -6,12 +6,6 @@ so ~/.vim/plugins.vim
 
 syntax enable
 "-------------------------------------EsLint-------------------------------------------"
-au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
-au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
-au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
-au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
-au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
-au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
 
 let g:php_cs_fixer_php_path = "F:/php.exe"               " Path to PHP
 let g:php_cs_fixer_path = "C:/Users/15743/php-cs-fixer"
@@ -29,6 +23,7 @@ set expandtab
 set autoindent
 set smartindent
 set tabstop=4
+set tw=80
 set shiftwidth=4
 set softtabstop=4
 set t_CO=256
@@ -41,6 +36,7 @@ set guioptions-=R
 set noerrorbells visualbell t_vb=
 set autowriteall
 set complete=.,w,b,u
+set completeopt=longest,menu
 set go=
 map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 
@@ -142,10 +138,19 @@ imap <Leader>t <Esc>:call Namespace()<cr>
 imap <Leader>s <Esc>:call Af()<cr>
 nmap <Leader>l <Esc>:!php -l %<cr>
 imap <Leader>d <Esc>vawda
+filetype plugin indent on 
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 
 let g:phpcomplete_relax_static_constraint = 1
 let g:phpcomplete_search_tags_for_variables = 1
+let g:phpcomplete_complete_for_unknown_classes=1
+au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
+au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
+au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
+au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
 
 
 
