@@ -8,6 +8,12 @@ imap <Leader>d <ESC>:call PhpDocSingle()<CR>i
 nmap <Leader>d :call PhpDocSingle()<CR>
 vnoremap <Leader>d :call PhpDocRange()<CR>
 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
+
 syntax enable
 "-------------------------------------EsLint-------------------------------------------"
 
@@ -19,13 +25,15 @@ let g:php_cs_fixer_config_file = "C:/Users/15743/.php_cs.dist"
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 "colorscheme base16-tomorrow-night-eighties
 colorscheme base16-material
-"colorscheme base16-material-darker
-"set guifont=Inconsolata:h15
-set guifont=Monoid:h14
+set guifont=Fira_Code:h10
 "set guifont=Fira_Code:h14:b
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
 set ts=4
 set expandtab
 set autoindent
